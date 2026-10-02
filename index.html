@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSME Project Report Maker</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main id="app">
+  <section id="form-section" class="no-print">
+    <h1>MSME Project Report Maker</h1>
+    <p class="muted">Select a scheme, read its terms, enter project details and generate a printable report.</p>
+
+    <h2>1. Scheme</h2>
+    <label>Scheme <select id="scheme"></select></label>
+    <div id="scheme-summary" class="muted"></div>
+    <div id="tnc" class="tnc"></div>
+    <label class="check"><input type="checkbox" id="accept"> I have read and accept the terms and conditions above.</label>
+
+    <h2>2. Applicant</h2>
+    <div class="grid">
+      <label>Enterprise name <input id="entName" value="[Enterprise Name]"></label>
+      <label>Promoter name <input id="promoter" value="[Promoter Name]"></label>
+      <label>Address <input id="address" value="[Address]"></label>
+      <label>Activity <input id="activity" value="[Business Activity]"></label>
+    </div>
+
+    <h2>3. Assets &amp; Funding</h2>
+    <table id="assets"><thead><tr><th>Asset</th><th>Type</th><th>Cost (₹)</th><th></th></tr></thead><tbody></tbody></table>
+    <button type="button" id="addAsset">+ Add asset</button>
+    <div class="grid">
+      <label>Working capital (₹) <input type="number" id="wc" value="0" min="0"></label>
+      <label>Interest rate (% p.a.) <input type="number" id="rate" step="0.01" min="0"></label>
+      <label>Promoter margin (%) <input type="number" id="margin" step="0.1" min="0" max="100"></label>
+      <label>Capital subsidy % <input type="number" id="subPct" step="0.1" min="0"></label>
+      <label>Capital subsidy max (₹) <input type="number" id="subMax" min="0"></label>
+      <label>Interest subvention (% p.a.) <input type="number" id="ivRate" step="0.01" min="0"></label>
+      <label>Subvention years <input type="number" id="ivYears" min="0"></label>
+    </div>
+
+    <h2>4. Financial assumptions</h2>
+    <div class="grid">
+      <label>Year-1 revenue (₹) <input type="number" id="rev" value="2000000" min="0"></label>
+      <label>Revenue growth (% p.a.) <input type="number" id="growth" value="8" step="0.1"></label>
+      <label>Variable cost (% of revenue) <input type="number" id="varPct" value="55" step="0.1"></label>
+      <label>Fixed costs year 1 (₹) <input type="number" id="fixed" value="250000" min="0"></label>
+      <label>Fixed cost escalation (% p.a.) <input type="number" id="esc" value="5" step="0.1"></label>
+      <label>Depreciation (% WDV) <input type="number" id="dep" value="15" step="0.1"></label>
+      <label>Tax rate (%) <input type="number" id="tax" value="25" step="0.1"></label>
+    </div>
+    <p id="error" class="error"></p>
+    <button type="button" id="generate" class="primary">Generate report</button>
+  </section>
+
+  <section id="report" hidden></section>
+</main>
+<script src="js/schemes.js"></script>
+<script src="js/calc.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
